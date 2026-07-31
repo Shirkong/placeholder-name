@@ -19,10 +19,17 @@ def home():
 @web.route("/wiki")
 def wiki():
     # Convert dataframe into a dynamic Pico CSS compatible table block
-    table_html = df.to_html(
-        index=False, classes="striped", border=0, justify="left"
-    )
-
+   # table_html = df.to_html(
+    #    index=False, classes="striped", border=0, justify="left"
+    #)
+    return render_template("website_wiki.html",
+                            move = Move,
+                           startup = Startup,
+                           active = Active,
+                           recovery = Recovery,
+                           des = Description
+                          )
+    
     # Pass the table directly into your beautiful template shell
     return render_template("website_wiki.html", table_html=table_html)
 
