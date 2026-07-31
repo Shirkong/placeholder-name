@@ -4,7 +4,7 @@
   Welcome to Fisticuffs
 </p>
 
-<p>How to install the website</p>
+<h3>How to install the website</h3>
 
 <p>To install the website, you have to install VS code</p>
 <p>Install the Final file and move that into VS code</p>
@@ -17,3 +17,5 @@
 <br>
 <p>Once in Final, run the python file by typing python website.py.</p>
 <p>This will run the website and have the game description and a wiki for the game</p>
+<hr>
+<br>
