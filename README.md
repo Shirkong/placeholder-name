@@ -19,3 +19,11 @@
 <p>This will run the website and have the game description and a wiki for the game</p>
 <hr>
 <br>
+<h3>You don't need to install anything to run the game</h3>
+<p>The zip file that you download will have a .exe file for you to run. It would have been web based, but we couldn't get it to work</p>
+<hr>
+<br>
+<h3>So how do I play?</h3>
+<p>All of the information you need to play the game is in the html files</p>
+<p>This includes controls, attacks, etc.</p>
+<p>We even have frame data stats for nerds</p>
