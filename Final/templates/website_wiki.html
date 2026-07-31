@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fisticuffs Wiki</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+        <!--Styles Used For The HTML File-->
+        <style>
+        .flex-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .flex-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .numpad-img {
+            border-radius: 8px;
+            box-shadow: var(--pico-card-box-shadow);
+        }
+        /* Custom styling to keep radio buttons inline */
+        .rating-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .rating-group label {
+            margin-bottom: 0;
+        }
+        </style>
+    </head>
+    <body>
+        <main class = "container">
+        <!--A Table with the Game Controls For Player 1-->
+        <h1>Player 1 Controls</h1>
+        <table>
+        <tr>
+          <th>Button</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>W</td>
+          <td>Jump</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Move Left</td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td>Crouch</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Move Right</td>
+        </tr>
+        <tr>
+          <td>J</td>
+          <td>Light Attack</td>
+        </tr>
+        <tr>
+          <td>K</td>
+          <td>Medium Attack</td>
+        </tr>
+        <tr>
+          <td>L</td>
+          <td>Heavy Attack</td>
+        </tr>
+      </table>
+      <br>
+        <!--A Table with the Game Controls For Player 2-->
+        <h1>Player 2 Controls</h1>
+        <table>
+        <tr>
+          <th>Button</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Up</td>
+          <td>Jump</td>
+        </tr>
+        <tr>
+          <td>Left</td>
+          <td>Move Left</td>
+        </tr>
+        <tr>
+          <td>Down</td>
+          <td>Crouch</td>
+        </tr>
+        <tr>
+          <td>Right</td>
+          <td>Move Right</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>Light Attack</td>
+        </tr>
+        <tr>
+          <td>X</td>
+          <td>Medium Attack</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Heavy Attack</td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <hr>
+      <!--Explaining The Numpad Notation-->
+      <h2>Understanding Numpad Notation</h2>
+        <div class="flex-container">
+          <div class="flex-text">
+            <p>To explain complex attack strings, a standard <strong>numpad notation</strong> system is used. This matches the layout of a standard keyboard numberpad, mapping directional inputs to numbers.</p>
+            <p>The buttons correspond exactly to positions relative to a joystick in neutral (<span class="notation">5</span>):</p>
+            <ul>
+              <li><span class="notation">5</span> is Neutral (no direction)</li>
+              <li><span class="notation">2</span> is Down / Crouching</li>
+              <li><span class="notation">j.</span> stands for a Jumping / Airborne state done by pressing 'W' on the keyboard</li>
+            </ul>
+            <p><strong>Examples:</strong></p>
+            <ul>
+              <li>A neutral light attack is written as <strong class="notation">5A</strong></li>
+              <li>A crouching medium attack is written as <strong class="notation">2B</strong></li>
+              <li>A jumping heavy attack is written as <strong class="notation">j.5C</strong></li>
+              </ul>
+          </div>
+          <div>
+            <article class="numpad-img" style="padding: 1rem; margin: 0;">
+              <img src="{{ url_for('static', filename='numberpad.jpg') }}" alt="Numpad Directional Guide" width="300" height="300">
+            </article>
+          </div>
+        </div>
+      
+      <section>
+        <!--Table With Specific Attacks and Inputs-->
+        <h2>Attack List & Frame Data</h2>
+        <div class="overflow-auto">
+          {{ table_html | safe }}
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- NEW: Game Feedback Form Section -->
+      <section id="feedback-form">
+        <h2>Did you like Fisticuffs?</h2>
+        <p>Let us know what you think of the game so far!</p>
+        
+        <form action="{{ url_for('submit_feedback') }}" method="POST">
+          <fieldset>
+            <legend>Do you like the game?</legend>
+            <div class="rating-group">
+              <label>
+                <input type="radio" name="liked_game" value="yes" required>
+                Yes, it's great! 👍
+              </label>
+              <label>
+                <input type="radio" name="liked_game" value="neutral">
+                It's okay. 😐
+              </label>
+              <label>
+                <input type="radio" name="liked_game" value="no">
+                No, needs work. 👎
+              </label>
+            </div>
+          </fieldset>
+
+          <label for="feedback_text">Any specific thoughts or balance changes you want to see?</label>
+          <textarea id="feedback_text" name="feedback_text" placeholder="Tell us your thoughts..." rows="4"></textarea>
+
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </section>
+
+        <!--Return To Home-->
+        <footer>
+            <a href="{{ url_for('home') }}" class="outline" role="button">← Back to Home</a>
+        </footer>
+        </main>
+    </body>
+</html>
