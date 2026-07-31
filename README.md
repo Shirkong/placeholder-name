@@ -10,7 +10,7 @@
 <p>Install the Final file and move that into VS code</p>
 <hr>
 <br>
-  <p>installations in VS Code</p>
+<h3>installations in VS Code</h3>
 <p>For VS code, install pandas and flask</p>
 <p>once installed, run the python file. Ensure you are in the right file directory(use cd [filename] to get into the directory)</p>
 <hr>
